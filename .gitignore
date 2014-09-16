@@ -16,6 +16,7 @@ tarballs/
 
 # Compiled objects
 A2/edgecount
+A3/browser
 
 # Compiled Object files
 *.slo
