@@ -8,7 +8,8 @@ A0/README
 
 # Test data
 A2/SomeData
-A3/TESTS
+A3/TESTS/*.cpp
+A3/TESTS/hqn-browser
 
 # Tarballs
 tarballs/
