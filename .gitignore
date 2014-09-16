@@ -6,8 +6,15 @@ A3/
 # Sensitive Information
 A0/README
 
+# Test data
+A2/SomeData
+A3/TESTS
+
 # Tarballs
 tarballs/
+
+# Compiled objects
+A2/edgecount
 
 # Compiled Object files
 *.slo
