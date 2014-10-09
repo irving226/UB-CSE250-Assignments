@@ -13,11 +13,12 @@ You **must** use the signature (i.e. prototype) given. **No helper function is a
 
 Note that by definition an empty string is a palindrome. So your function must return `true` if the input string is empty. Also, you can assume that all characters are in lower case.
 
-`bool iterative_palindrome(const string& str) 
+```cpp
+bool iterative_palindrome(const string& str) 
 {
     // your code goes here
 }
-`
+```
 
 For the recursive solution, given an input string `str` we will call the following function with 
 
@@ -25,16 +26,17 @@ For the recursive solution, given an input string `str` we will call the followi
 
 In particular, note that `end` is one more than the index of the last character. (Recall the `size_t` issue with iterative binary search 2 in the lecture slides.)
 
-`bool recursive_palindrome(const string& str, size_t start, size_t end) 
+```cpp
+bool recursive_palindrome(const string& str, size_t start, size_t end) 
 {
     // your code goes here
 }
-`
+```
 
 ##### Sample solution 1
 
 The iterative solution
-`
+```cpp
 // Would you agree that it's much cleaner than the recursive one?
 bool iterative_palindrome(const string& str) 
 {
@@ -43,10 +45,10 @@ bool iterative_palindrome(const string& str)
     }
     return true;
 }
-`
+```
 
 The recursive solution
-`
+```cpp
 // the initial call is recursive_palindrome(str, 0, str.length()) 
 bool recursive_palindrome(const string& str, size_t start, size_t end) 
 {
@@ -54,7 +56,7 @@ bool recursive_palindrome(const string& str, size_t start, size_t end)
     return (str[start] == str[end-1]) && 
            recursive_palindrome(str, start+1, end-1);
 }
-`
+```
 
 ##### Sample problem 2
 
@@ -62,7 +64,7 @@ Given a non-negative integer `n`, write the iterative and recursive versions of 
 
 You **must** use the signature (i.e. prototype) given. **No helper function is accepted**.
 
-`
+```cpp
 // the iterative solution
 string iterative_binrep(size_t n) 
 {
@@ -74,11 +76,11 @@ string recursive_binrep(size_t n)
 {
     // your code goes here
 }
-`
+```
 
 ##### Sample solution 2
 
-`
+```cpp
 // the iterative solution
 string iterative_binrep(size_t n) {
     string ret;
@@ -95,7 +97,7 @@ string recursive_binrep(size_t n) {
     if (n == 1) return "1";
     return recursive_binrep(n/2) + (n%2 == 0? "0" : "1");
 }
-`
+```
 
 ### What to do? Solve the following problems
 
@@ -106,7 +108,7 @@ stack of integers and returns the number of negative integers from the stack.
 You **must** use the signature (i.e. prototype) given. 
 **No helper function is accepted**.
 
-`
+```cpp
 // the iterative solution
 size_t iterative_num_negatives(stack<int> int_stack)
 {
@@ -118,7 +120,7 @@ size_t recursive_num_negatives(stack<int> int_stack)
 {
     // your code goes here
 }
-`
+```
 
 ##### Problem 2
 
@@ -128,9 +130,9 @@ Write the iterative and recursive versions of a function that takes in two vecto
 
 You **must** use the signature (i.e. prototype) given. **No helper function is accepted**.
 
-`
+```cpp
 // the iterative solution
-int iterative_sub_vector(vector<int>& a, vector<int> b)
+bool iterative_sub_vector(vector<int>& a, vector<int> b)
 {
     // your code goes here
 }
@@ -140,11 +142,11 @@ int iterative_sub_vector(vector<int>& a, vector<int> b)
  * b into a separate vector. The function prototyp is already a hint
  * the initial call is recursive_sub_vector(a, b, 0)
  */
-int recursive_sub_vector(vector<int>& b, vector<int> b, size_t k)
+bool recursive_sub_vector(vector<int>& a, vector<int> b, size_t k)
 {
     // your code goes here
 }
-`
+```
 
 ##### Problem 3
 
@@ -160,3 +162,4 @@ pieces of codes you use to test them. (For example,
 `#include<iostream>` and `main()` should not be 
 included in the submission. We grade the submission by reading only the code 
 you put in the functions' bodies.
+
