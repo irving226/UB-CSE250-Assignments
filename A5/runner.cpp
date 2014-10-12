@@ -21,7 +21,7 @@ stack<int> p1_makeStack(int neg);
 void test_p2_a();
 void test_p2_b();
 void test_p3();
-vector<int> p3_makeVector(int amount);
+vector<int> p3_makeVector();
 
 // Methods
 int main(int argc, char **argv)  {
@@ -157,32 +157,33 @@ void test_p2_b() {
 void test_p3() {
 	int fail = 0;
 
-	for ( int i=1; i < 10; i++ ) {
-		int amount = rand() % 1000;
-		vector<int> vec = p3_makeVector(amount);
-		string pfail = "FAIL";
-
-		int target;
-		bool expected;
-
-		if ( (rand() % 100) > 50 || amount == 0 ) {
-			target = amount;
-			expected = true;
-		} else {
-			target = amount / 2;
-			expected = false;
-		}
-
-		int actual = sum_to_target(vec, target);
-
-		if ( expected == actual ) {
-			pfail = "PASS";
-		} else {
-			fail++;
-		}
-
-		cout << "[test_p3 : test" << i << " | " << pfail << " ] expected: " << expected << " | actual: " << actual << endl;
-	}
+	vector<int> test = p3_makeVector();
+	
+	bool expected1 = true;
+	bool expected2 = true;
+	bool expected3 = false;
+	bool expected4 = true;
+	bool expected5 = true;
+	
+	bool actual1 = sum_to_target(test, 0);     // Always true
+	bool actual2 = sum_to_target(test, 19);    // 10+0
+	bool actual3 = sum_to_target(test, 20000); // Invalid
+	bool actual4 = sum_to_target(test, 55);    // 1+2+3+4+5+6+7+8+9+10
+	bool actual5 = sum_to_target(test, 46);    // 1+2+3+4+5+6+7+8+10
+	
+	string pfail1 = "PASS"; string pfail2 = "PASS"; string pfail3 = "PASS"; string pfail4 = "PASS"; string pfail5 = "PASS";
+	
+	if ( expected1 != actual1 ) { fail++; pfail1 = "FAIL"; }
+	if ( expected2 != actual2 ) { fail++; pfail2 = "FAIL";  }
+	if ( expected3 != actual3 ) { fail++; pfail3 = "FAIL";  }
+	if ( expected4 != actual4 ) { fail++; pfail4 = "FAIL";  }
+	if ( expected5 != actual5 ) { fail++; pfail5 = "FAIL";  }
+	
+	cout << "[test_p3 : test1 | " << pfail1 << " ] expected: " << expected1 << " | actual: " << actual1 << endl;
+	cout << "[test_p3 : test2 | " << pfail2 << " ] expected: " << expected2 << " | actual: " << actual2 << endl;
+	cout << "[test_p3 : test3 | " << pfail3 << " ] expected: " << expected3 << " | actual: " << actual3 << endl;
+	cout << "[test_p3 : test4 | " << pfail4 << " ] expected: " << expected4 << " | actual: " << actual4 << endl;
+	cout << "[test_p3 : test5 | " << pfail5 << " ] expected: " << expected5 << " | actual: " << actual4 << endl;
 
 	if ( fail > 0 )
 		cout << endl << "FAILED: " << fail << endl << endl;
@@ -204,25 +205,12 @@ stack<int> p1_makeStack(int amt) {
 	return s;
 }
 
-vector<int> p3_makeVector(int amount) {
-	vector<int> v;
-	int needed = amount;
-
-	for ( int i=0; i < amount; i++ ) {
-		int num1 = rand() % 100 + 1; // Pesky 0's
-		int num2 = rand() % 10 + 1;
-
-		if ( i % 2 ) {
-			if ( needed - num2 > 0 ) {
-				v.push_back(needed-num2);
-				needed -= num2;
-			} else {
-				v.push_back(num1);
-			}
-		} else {
-			v.push_back(num1);
-		}
+vector<int> p3_makeVector() {
+	vector<int> vec;
+	
+	for ( int i=0; i <= 10; i++ ) {
+		vec.push_back(i);
 	}
-
-	return v;
+	
+	return vec;
 }
