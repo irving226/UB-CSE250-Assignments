@@ -173,12 +173,12 @@ void test_p3() {
     bool expected5 = true;
     bool expected6 = true;
     
-    bool actual1 = sum_to_target(test, 0, 0);     // Always true
-    bool actual2 = sum_to_target(test, 19, 0);    // 10+0
-    bool actual3 = sum_to_target(test, 20000, 0); // Invalid
-    bool actual4 = sum_to_target(test, 55, 0);    // 1+2+3+4+5+6+7+8+9+10
-    bool actual5 = sum_to_target(test, 46, 0);    // 1+2+3+4+5+6+7+8+10
-    bool actual6 = sum_to_target(test, 11, 0);    // 1+10
+    bool actual1 = sum_to_target(test, 0);     // Always true
+    bool actual2 = sum_to_target(test, 19);    // 10+0
+    bool actual3 = sum_to_target(test, 20000); // Invalid
+    bool actual4 = sum_to_target(test, 55);    // 1+2+3+4+5+6+7+8+9+10
+    bool actual5 = sum_to_target(test, 46);    // 1+2+3+4+5+6+7+8+10
+    bool actual6 = sum_to_target(test, 11);    // 1+10
     
     string pfail1 = "PASS"; string pfail2 = "PASS"; string pfail3 = "PASS"; string pfail4 = "PASS"; string pfail5 = "PASS";
     string pfail6 = "PASS";
