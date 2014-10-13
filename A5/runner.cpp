@@ -171,26 +171,31 @@ void test_p3() {
 	bool expected3 = false;
 	bool expected4 = true;
 	bool expected5 = true;
+	bool expected6 = true;
 	
 	bool actual1 = sum_to_target(test, 0, 0);     // Always true
 	bool actual2 = sum_to_target(test, 19, 0);    // 10+0
 	bool actual3 = sum_to_target(test, 20000, 0); // Invalid
 	bool actual4 = sum_to_target(test, 55, 0);    // 1+2+3+4+5+6+7+8+9+10
 	bool actual5 = sum_to_target(test, 46, 0);    // 1+2+3+4+5+6+7+8+10
+	bool actual6 = sum_to_target(test, 11, 0);    // 1+10
 	
 	string pfail1 = "PASS"; string pfail2 = "PASS"; string pfail3 = "PASS"; string pfail4 = "PASS"; string pfail5 = "PASS";
+    string pfail6 = "PASS";
 	
 	if ( expected1 != actual1 ) { fail++; pfail1 = "FAIL"; }
 	if ( expected2 != actual2 ) { fail++; pfail2 = "FAIL";  }
 	if ( expected3 != actual3 ) { fail++; pfail3 = "FAIL";  }
 	if ( expected4 != actual4 ) { fail++; pfail4 = "FAIL";  }
 	if ( expected5 != actual5 ) { fail++; pfail5 = "FAIL";  }
+	if ( expected6 != actual6 ) { fail++; pfail6 = "FAIL";  }
 	
 	cout << "[test_p3 : test1 | " << pfail1 << " ] expected: " << expected1 << " | actual: " << actual1 << endl;
 	cout << "[test_p3 : test2 | " << pfail2 << " ] expected: " << expected2 << " | actual: " << actual2 << endl;
 	cout << "[test_p3 : test3 | " << pfail3 << " ] expected: " << expected3 << " | actual: " << actual3 << endl;
 	cout << "[test_p3 : test4 | " << pfail4 << " ] expected: " << expected4 << " | actual: " << actual4 << endl;
-	cout << "[test_p3 : test5 | " << pfail5 << " ] expected: " << expected5 << " | actual: " << actual4 << endl;
+	cout << "[test_p3 : test5 | " << pfail5 << " ] expected: " << expected5 << " | actual: " << actual5 << endl;
+	cout << "[test_p3 : test6 | " << pfail6 << " ] expected: " << expected6 << " | actual: " << actual6 << endl;
 
 	if ( fail > 0 )
 		cout << endl << "FAILED: " << fail << endl << endl;
