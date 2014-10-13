@@ -20,6 +20,6 @@ bool iterative_sub_vector(vector<int>& a, vector<int> b);
 bool recursive_sub_vector(vector<int>& a, vector<int> b, size_t k);
 
 // Problem 3
-bool sum_to_target(vector<int>& int_vec, int target);
+bool sum_to_target(vector<int>& int_vec, int target, size_t k);
 
 #endif

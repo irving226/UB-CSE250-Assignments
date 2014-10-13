@@ -11,6 +11,8 @@
 #include <stack>
 #include <string>
 #include <stdlib.h> // Rand
+#include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -22,6 +24,7 @@ void test_p2_a();
 void test_p2_b();
 void test_p3();
 vector<int> p3_makeVector();
+void test_cs();
 
 // Methods
 int main(int argc, char **argv)  {
@@ -41,6 +44,10 @@ int main(int argc, char **argv)  {
 	cout << "---------" << endl;
 	cout << "Problem #3" << endl;
 	test_p3();
+	
+	cout << "---------" << endl;
+	cout << "Code Sniffing" << endl;
+	test_cs();
 
 	return 0;
 }
@@ -165,11 +172,11 @@ void test_p3() {
 	bool expected4 = true;
 	bool expected5 = true;
 	
-	bool actual1 = sum_to_target(test, 0);     // Always true
-	bool actual2 = sum_to_target(test, 19);    // 10+0
-	bool actual3 = sum_to_target(test, 20000); // Invalid
-	bool actual4 = sum_to_target(test, 55);    // 1+2+3+4+5+6+7+8+9+10
-	bool actual5 = sum_to_target(test, 46);    // 1+2+3+4+5+6+7+8+10
+	bool actual1 = sum_to_target(test, 0, 0);     // Always true
+	bool actual2 = sum_to_target(test, 19, 0);    // 10+0
+	bool actual3 = sum_to_target(test, 20000, 0); // Invalid
+	bool actual4 = sum_to_target(test, 55, 0);    // 1+2+3+4+5+6+7+8+9+10
+	bool actual5 = sum_to_target(test, 46, 0);    // 1+2+3+4+5+6+7+8+10
 	
 	string pfail1 = "PASS"; string pfail2 = "PASS"; string pfail3 = "PASS"; string pfail4 = "PASS"; string pfail5 = "PASS";
 	
@@ -187,6 +194,37 @@ void test_p3() {
 
 	if ( fail > 0 )
 		cout << endl << "FAILED: " << fail << endl << endl;
+}
+
+void test_cs() {
+	ifstream a5("a5.cpp");
+	string line;
+	int linenum = 1;
+	int fails = 0;
+	
+	while ( getline(a5, line) ) {
+		// Lines
+		if ( line.size() > 80 ) {
+			cout << "[test_cs : line : lines:" << linenum << "] Line " << linenum << " has " << line.size() << " charactersc, over the recommended value of 80" << endl;
+			fails++;
+		}
+		
+		// Tabs
+		for ( size_t i=0; i < line.size(); i++ ) {
+			if ( line[i] == '\t' ) {
+				cout << "[test_cs : tab : lines:" << linenum << "] Line " << linenum << " a tab. Change that to 4 spaces!" << endl;
+				fails++;
+			}
+		}
+		
+		linenum++;
+	}
+	
+	if ( fails > 0 ) {
+		cout << "FAILED: " << fails << endl << endl;
+	} else {
+		cout << "PASSED!" << endl << endl;
+	}
 }
 
 // Helper Methods
