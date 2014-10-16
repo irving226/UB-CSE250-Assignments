@@ -25,7 +25,7 @@ using namespace std;
 size_t iterative_num_negatives(stack<int> int_stack) {
     size_t num = int_stack.size();
     while ( !int_stack.empty() ) {
-        if ( int_stack.top() > 0 ) num--;
+        if ( int_stack.top() >= 0 ) num--;
         int_stack.pop();
     }
 
