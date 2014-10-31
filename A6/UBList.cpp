@@ -182,47 +182,6 @@ void UBList::sort()
     left.sort();
     right.sort();
     
-    // Actually sort
-    // Left
-    Node* newLeftHead = left.head;
-    for ( size_t i=0; i < left.numNodes; i++ ) {
-        Node* prev = newLeftHead;
-        Node* ptr = prev->next;
-        
-        for ( size_t j=1; j < left.numNodes; j++ ) {            
-            if ( prev->key > ptr->key ) {
-                Node* tmp = prev;
-                
-                prev = ptr;
-                ptr->next = tmp;
-            }
-            
-            prev = ptr;
-            ptr = ptr->next;
-        }
-    }
-    left.head = newLeftHead;
-    
-    // Right
-    Node* newRightHead = right.head;
-    for ( size_t i=0; i < right.numNodes; i++ ) {
-        Node* prev = newRightHead;
-        Node* ptr = prev->next;
-        
-        for ( size_t j=1; j < right.numNodes; j++ ) {
-            if ( prev->key > ptr->key ) {
-                Node* tmp = prev;
-                
-                prev = ptr;
-                ptr->next = tmp;
-            }
-            
-            prev = ptr;
-            ptr = ptr->next;
-        }
-    }
-    right.head = newRightHead;
-    
     // Merge
     left.merge(right);
     
