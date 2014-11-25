@@ -1,7 +1,7 @@
 # GitIgnore
 
 # Current Assignment
-A7/BinaryTree.*
+A9/SplayTree.cpp
 
 # Sensitive Information
 A0/README
@@ -20,6 +20,8 @@ A3/browser
 A5/runner
 A6/listmanip
 A7/printtree
+A8/ubheap
+A9/splaydriver
 
 # Compiled Object files
 *.slo
